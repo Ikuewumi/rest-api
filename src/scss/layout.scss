@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', system-ui, sans-serif;
+}
+
+
+:root {
+    --clr-dlue: #2B3945;
+    --clr-dlue-light: #202C37;
+    --clr-dlue-dark: #111517;
+    --clr-grey: #FAFAFA;
+    --clr-grey-dark: #858585;
+    --clr-white: #FFFFFF;
+
+    --step--2: clamp(0.6075rem, 0.5962rem + 0.0565vw, 0.64rem);
+    --step--1: clamp(0.7294rem, 0.7048rem + 0.1228vw, 0.8rem);
+    --step-0: clamp(0.875rem, 0.8315rem + 0.2174vw, 1rem);
+    --step-1: clamp(1.05rem, 0.9804rem + 0.3478vw, 1.25rem);
+    --step-2: clamp(1.26rem, 1.1548rem + 0.5261vw, 1.5625rem);
+    --step-3: clamp(1.05rem, 1.3584rem + 0.7674vw, 1.9531rem);
+    --step-4: clamp(1.8144rem, 1.5963rem + 1.0902vw, 2.4413rem);
+    --step-5: clamp(2.1775rem, 1.8734rem + 1.5207vw, 3.0519rem);
+
+    font-size: 14px;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    // font-family: 'Nunito Sans', system-ui, sans-serif;
+
+
+    @media (prefers-color-scheme: dark) {
+      --clr-dlue: #FFFFFF;
+      --clr-dlue-light: #FAFAFA;
+      --clr-dlue-dark: #FAFAFA;
+      --clr-grey: #202d36;
+      --clr-grey-dark: #111517;
+      --clr-white: #2b3743;
+    }
+}
+
+html[data-theme=light] {
+  --clr-dlue: #2B3945 !important;
+  --clr-dlue-light: #202C37!important;
+  --clr-dlue-dark: #111517 !important;
+  --clr-grey: #FAFAFA !important;
+  --clr-grey-dark: #858585 !important;
+  --clr-white: #FFFFFF !important;
+}
+
+html[data-theme=dark] {
+  --clr-dlue: #FFFFFF !important;
+  --clr-dlue-light: #FAFAFA !important;
+  --clr-dlue-dark: #FAFAFA !important;
+  --clr-grey: #202d36 !important;
+  --clr-grey-dark: #111517 !important;
+  --clr-white: #2b3743 !important;
+}
+
+  
+
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--clr-grey);
+    color: var(--clr-dlue);
+}
+
+img, svg {
+    max-width: 100%;
+}
+
+.none {
+    display: none!important;
+}
+
+
+
+
+.sg {
+    --col-count: 6;
+  
+    display: grid;
+    grid-template-columns:
+      minmax(1rem, 1fr) 
+      repeat(var(--col-count), minmax(0, 12rem))
+      minmax(1rem, 1fr);
+
+
+    & > * {
+        grid-column: 2 / -2;
+    }
+
+
+
+    @media (min-width: 768px) {
+        &.two {
+          --col-number: calc(var(--col-count) / 2);
+        }
+      
+        &.three {
+          --col-number: calc(var(--col-count) / 3);
+        }
+      
+        &.cols > * {
+          grid-column: span var(--col-number);
+        }
+      
+        &.cols > *:first-child {
+          grid-column: var(--col-start, 2) / span var(--col-number);
+        }
+      
+        &.cols > *:last-child {
+          grid-column: span var(--col-number) / calc(var(--col-start, 2) * -1);
+        }
+    }
+}
