@@ -12,8 +12,10 @@ const checkLsTheme = () => {
     if (['light', 'dark', 'system'].includes(ls)) lsTheme = ls
     
     localStorage.setItem('theme', lsTheme)
-
 }
+
+
+checkLsTheme()
 
 
 
